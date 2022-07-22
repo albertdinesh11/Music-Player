@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="?attr/colorPrimary">
+
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/search_card"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:neumorph_shapeType="basin"
+        app:neumorph_shadowColorDark="?attr/colorSecondaryVariant"
+        app:neumorph_shadowColorLight="?attr/colorSecondary"
+        app:neumorph_shadowElevation="2dp">
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:searchIcon="@drawable/ic_search"
+            android:queryHint="Search Music"
+            android:iconifiedByDefault="false"
+            android:queryBackground="@android:color/transparent"
+            />
+    </soup.neumorphism.NeumorphCardView>
+
+    <TextView
+        android:id="@+id/totalSongsMA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_card"
+        android:layout_marginStart="16dp"
+        android:elevation="3dp"
+        android:textSize="14sp"
+        android:text="Total Songs : 0"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/musicRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/totalSongsMA"
+        android:layout_marginTop="8dp"/>
+
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nowPlaying"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_alignParentBottom="true"
+            android:name="com.example.musicplayer.NowPlayingFragment"
+            tools:layout="@layout/fragment_now_playing"
+            />
+
+
+
+</RelativeLayout>

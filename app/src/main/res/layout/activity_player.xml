@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlayerActivity"
+    android:background="?attr/colorPrimary"
+    tools:ignore="MissingDefaultResource">
+
+   <androidx.cardview.widget.CardView
+       android:id="@+id/song_img_card"
+       android:layout_width="match_parent"
+       android:layout_height="300dp"
+       android:layout_below="@+id/backBtnPA"
+       android:layout_marginTop="32dp"
+       android:layout_marginEnd="32dp"
+       android:layout_marginStart="32dp"
+       app:cardCornerRadius="20dp"
+       android:elevation="4dp">
+
+      <ImageView
+          android:id="@+id/songImgPA"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:scaleType="centerCrop"
+          android:src="@drawable/ic_music"/>
+   </androidx.cardview.widget.CardView>
+
+
+   <TextView
+       android:id="@+id/songNamePA"
+       android:layout_width="300dp"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/song_img_card"
+       android:layout_marginStart="32dp"
+       android:layout_marginTop="32dp"
+       android:text="Peaceful Music"
+       android:textSize="20sp"
+       android:ellipsize="marquee"
+       android:marqueeRepeatLimit="marquee_forever"
+       android:singleLine="true"
+
+       />
+
+   <TextView
+       android:id="@+id/songAuthorPA"
+       android:layout_width="250dp"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/songNamePA"
+       android:layout_marginStart="32dp"
+       android:layout_marginTop="8dp"
+       android:text="Peaceful Music"
+       android:textSize="16sp"
+       android:ellipsize="marquee"
+       android:marqueeRepeatLimit="marquee_forever"
+       android:singleLine="true"
+       />
+   <soup.neumorphism.NeumorphCardView
+       android:id="@+id/seekbar_card"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="32dp"
+       android:layout_marginEnd="32dp"
+       android:layout_marginTop="32dp"
+       android:layout_below="@+id/songAuthorPA"
+       app:neumorph_shapeType="pressed"
+       app:neumorph_shadowColorDark="?attr/colorSecondaryVariant"
+       app:neumorph_shadowColorLight="?attr/colorSecondary"
+       app:neumorph_shadowElevation="2dp"
+       app:neumorph_backgroundColor="?attr/colorPrimary">
+      <SeekBar
+          android:id="@+id/seekBarPA"
+          android:layout_width="match_parent"
+          android:layout_height="20dp"
+          android:paddingStart="0dp"
+          android:paddingEnd="0dp"
+          android:progress="50"
+          android:splitTrack="false"
+          android:progressTint="@color/secondary_color"
+          android:progressBackgroundTint="@android:color/transparent"
+          android:thumbTint="@color/secondary_color"/>
+   </soup.neumorphism.NeumorphCardView>
+
+
+   <TextView
+       android:id="@+id/tvSeekBarStart"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginStart="44dp"
+       android:layout_below="@id/seekbar_card"
+       android:text="2:32"
+       />
+
+   <TextView
+       android:id="@+id/tvSeekBarEnd"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/seekbar_card"
+       android:layout_alignParentEnd="true"
+       android:layout_marginEnd="44dp"
+       android:text="5:43"
+       />
+
+
+   <RelativeLayout
+       android:id="@+id/song_play_layout"
+       android:layout_width="match_parent"
+       android:layout_height="80dp"
+       android:layout_above="@+id/song_play_layout2"
+       android:layout_marginTop="20dp"
+       android:layout_marginBottom="10dp">
+
+      <soup.neumorphism.NeumorphImageButton
+          android:id="@+id/previousBtnPA"
+          android:layout_width="75dp"
+          android:layout_height="75dp"
+          android:layout_toStartOf="@+id/playPauseBtn"
+          style="@style/Widget.Neumorph.ImageButton"
+          android:src="@drawable/ic_previous"
+          android:layout_marginEnd="32dp"
+          android:layout_marginTop="5dp"
+          app:neumorph_shadowColorDark="?attr/colorSecondaryVariant"
+          app:neumorph_shadowColorLight="?attr/colorSecondary"
+          app:neumorph_shadowElevation="2dp"
+          app:neumorph_backgroundColor="?attr/colorPrimary"
+          />
+
+      <soup.neumorphism.NeumorphImageButton
+          android:id="@+id/playPauseBtn"
+          android:layout_width="80dp"
+          android:layout_height="80dp"
+          style="@style/Widget.Neumorph.ImageButton"
+          android:src="@drawable/ic_play"
+          android:layout_centerHorizontal="true"
+          app:neumorph_shadowColorDark="?attr/colorSecondaryVariant"
+          app:neumorph_shadowColorLight="?attr/colorSecondary"
+          app:neumorph_shadowElevation="2dp"
+          app:neumorph_backgroundColor="?attr/colorPrimary"
+          />
+      <soup.neumorphism.NeumorphImageButton
+          android:id="@+id/nextBtnPA"
+          android:layout_width="75dp"
+          android:layout_height="75dp"
+          style="@style/Widget.Neumorph.ImageButton"
+          android:src="@drawable/ic_next"
+          android:layout_toEndOf="@+id/playPauseBtn"
+          android:layout_marginStart="32dp"
+          android:layout_marginTop="5dp"
+          app:neumorph_shadowColorDark="?attr/colorSecondaryVariant"
+          app:neumorph_shadowColorLight="?attr/colorSecondary"
+          app:neumorph_shadowElevation="2dp"
+          app:neumorph_backgroundColor="?attr/colorPrimary"
+          />
+
+   </RelativeLayout>
+
+
+
+   <RelativeLayout
+       android:id="@+id/song_play_layout2"
+       android:layout_width="match_parent"
+       android:layout_height="80dp"
+       android:layout_marginBottom="20dp"
+       android:layout_alignParentBottom="true"
+       >
+
+      <soup.neumorphism.NeumorphImageButton
+          android:id="@+id/shuffleBtn"
+          android:layout_width="60dp"
+          android:layout_height="60dp"
+          style="@style/Widget.Neumorph.ImageButton"
+          android:src="@drawable/ic_shuffle"
+          android:layout_toStartOf="@+id/empty_center"
+          app:neumorph_shadowColorDark="?attr/colorSecondaryVariant"
+          app:neumorph_shadowColorLight="?attr/colorSecondary"
+          app:neumorph_shadowElevation="2dp"
+          app:neumorph_shapeType="pressed"
+          app:neumorph_backgroundColor="?attr/colorPrimary"
+          />
+
+      <FrameLayout
+          android:id="@+id/empty_center"
+          android:layout_width="40dp"
+          android:layout_height="10dp"
+          android:layout_centerInParent="true"/>
+
+      <soup.neumorphism.NeumorphImageButton
+          android:id="@+id/repeatBtnPA"
+          android:layout_width="60dp"
+          android:layout_height="60dp"
+          style="@style/Widget.Neumorph.ImageButton"
+          android:src="@drawable/ic_repeat"
+          android:layout_toEndOf="@+id/empty_center"
+          app:neumorph_shadowColorDark="?attr/colorSecondaryVariant"
+          app:neumorph_shadowColorLight="?attr/colorSecondary"
+          app:neumorph_shadowElevation="2dp"
+          app:neumorph_shapeType="pressed"
+          app:neumorph_backgroundColor="?attr/colorPrimary"
+          />
+
+   </RelativeLayout>
+
+
+
+
+
+
+   <soup.neumorphism.NeumorphImageButton
+       android:id="@+id/backBtnPA"
+       android:layout_width="60dp"
+       android:layout_height="60dp"
+       style="@style/Widget.Neumorph.ImageButton"
+       android:src="@drawable/arrow_back"
+       android:layout_marginTop="32dp"
+       android:layout_marginStart="28dp"
+       app:neumorph_shadowColorDark="?attr/colorSecondaryVariant"
+       app:neumorph_shadowColorLight="?attr/colorSecondary"
+       app:neumorph_shadowElevation="2dp"
+       app:neumorph_backgroundColor="?attr/colorPrimary"
+       />
+
+   <soup.neumorphism.NeumorphImageButton
+       android:id="@+id/moreBtnPA"
+       android:layout_width="60dp"
+       android:layout_height="60dp"
+       style="@style/Widget.Neumorph.ImageButton"
+       android:src="@drawable/ic_more"
+       android:layout_alignParentEnd="true"
+       android:layout_marginTop="32dp"
+       android:layout_marginEnd="28dp"
+       app:neumorph_shadowColorDark="?attr/colorSecondaryVariant"
+       app:neumorph_shadowColorLight="?attr/colorSecondary"
+       app:neumorph_shadowElevation="2dp"
+       app:neumorph_backgroundColor="?attr/colorPrimary"
+       />
+
+
+
+</RelativeLayout>
