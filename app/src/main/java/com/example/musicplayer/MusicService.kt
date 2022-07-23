@@ -29,6 +29,8 @@ class MusicService:Service(), AudioManager.OnAudioFocusChangeListener {
         }
     }
 
+
+
     // for showing notification
     fun showNotification(playPauseBtn: Int, playbackSpeed: Float){
         val  notificationToMainIntent = Intent(baseContext,MainActivity::class.java)
@@ -111,21 +113,53 @@ class MusicService:Service(), AudioManager.OnAudioFocusChangeListener {
 
     // for pausing while other source of audio is in active
     override fun onAudioFocusChange(focusChange: Int) {
-        if (focusChange <= 0){
-            // pause music
-            PlayerActivity.binding.playPauseBtn.setImageResource(R.drawable.ic_play)
-            NowPlayingFragment.binding.playPauseBtnNp.setImageResource(R.drawable.ic_play)
-            showNotification(R.drawable.ic_play, 0F)
-            PlayerActivity.isPlaying = false
-            mediaPlayer!!.pause()
-        }else{
-            // play music
-            PlayerActivity.binding.playPauseBtn.setImageResource(R.drawable.ic_pause)
-            NowPlayingFragment.binding.playPauseBtnNp.setImageResource(R.drawable.ic_pause)
-            showNotification(R.drawable.ic_pause, 0F)
-            PlayerActivity.isPlaying = true
-            mediaPlayer!!.start()
+        when (focusChange){
+            AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ->{
+                // pause music
+                PlayerActivity.binding.playPauseBtn.setImageResource(R.drawable.ic_play)
+                NowPlayingFragment.binding.playPauseBtnNp.setImageResource(R.drawable.ic_play)
+                showNotification(R.drawable.ic_play, 0F)
+                PlayerActivity.isPlaying = false
+                mediaPlayer!!.pause()
+            }
+            AudioManager.AUDIOFOCUS_LOSS ->{
+                // pause music
+                PlayerActivity.binding.playPauseBtn.setImageResource(R.drawable.ic_play)
+                NowPlayingFragment.binding.playPauseBtnNp.setImageResource(R.drawable.ic_play)
+                showNotification(R.drawable.ic_play, 0F)
+                PlayerActivity.isPlaying = false
+                mediaPlayer!!.pause()
+            }
+            AudioManager.AUDIOFOCUS_GAIN_TRANSIENT ->{
+                // play music
+                PlayerActivity.binding.playPauseBtn.setImageResource(R.drawable.ic_pause)
+                NowPlayingFragment.binding.playPauseBtnNp.setImageResource(R.drawable.ic_pause)
+                showNotification(R.drawable.ic_pause, 0F)
+                PlayerActivity.isPlaying = true
+                mediaPlayer!!.start()
+            }
+            AudioManager.AUDIOFOCUS_REQUEST_FAILED ->{
+                mediaPlayer!!.stop()
+            }
+            AudioManager.AUDIOFOCUS_REQUEST_GRANTED ->{
+                // play music
+                PlayerActivity.binding.playPauseBtn.setImageResource(R.drawable.ic_pause)
+                NowPlayingFragment.binding.playPauseBtnNp.setImageResource(R.drawable.ic_pause)
+                showNotification(R.drawable.ic_pause, 0F)
+                PlayerActivity.isPlaying = true
+                mediaPlayer!!.start()
+            }
+            AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK ->{
+                // pause music
+                PlayerActivity.binding.playPauseBtn.setImageResource(R.drawable.ic_play)
+                NowPlayingFragment.binding.playPauseBtnNp.setImageResource(R.drawable.ic_play)
+                showNotification(R.drawable.ic_play, 0F)
+                PlayerActivity.isPlaying = false
+                mediaPlayer!!.pause()
+            }
+
         }
+
     }
 
 

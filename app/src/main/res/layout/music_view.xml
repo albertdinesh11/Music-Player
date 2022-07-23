@@ -1,84 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/colorPrimary"
     android:id="@+id/music_view">
 
+
     <soup.neumorphism.NeumorphCardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="80dp"
         app:neumorph_shapeType="flat"
         app:neumorph_shadowColorDark="?attr/colorSecondaryVariant"
         app:neumorph_shadowColorLight="?attr/colorSecondary"
         app:neumorph_shadowElevation="2dp">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/song_img_card"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:cardCornerRadius="60dp"
                 android:layout_centerVertical="true"
+                android:elevation="4dp"
+                app:cardCornerRadius="60dp"
                 android:layout_marginStart="10dp"
-                android:elevation="4dp">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
                 <ImageView
                     android:id="@+id/songImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_music"/>
+                    android:src="@drawable/ic_music" />
             </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/songName"
-                android:layout_width="160dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_toEndOf="@+id/song_img_card"
+                android:singleLine="true"
                 android:text="song Name"
                 android:textSize="16sp"
-                android:layout_toEndOf="@+id/song_img_card"
-                android:singleLine="true"
-                />
+                app:layout_constraintBottom_toTopOf="@+id/songAlbum"
+                app:layout_constraintEnd_toStartOf="@+id/moreBtnMA"
+                app:layout_constraintHorizontal_bias="0.108"
+                app:layout_constraintStart_toEndOf="@+id/song_img_card"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
             <TextView
                 android:id="@+id/songAlbum"
-                android:layout_width="160dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:text="song Description"
-                android:textSize="12sp"
                 android:layout_below="@+id/songName"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="40dp"
                 android:layout_toEndOf="@+id/song_img_card"
-                android:singleLine="true"
                 android:ellipsize="marquee"
                 android:marqueeRepeatLimit="marquee_forever"
-                />
+                android:singleLine="true"
+                android:text="song Description"
+                android:textSize="12sp"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintBottom_toBottomOf="@id/song_img_card"
+                app:layout_constraintEnd_toStartOf="@+id/moreBtnMA"
+                app:layout_constraintStart_toEndOf="@+id/song_img_card" />
 
 
             <soup.neumorphism.NeumorphImageButton
                 android:id="@+id/moreBtnMA"
+                style="@style/Widget.Neumorph.ImageButton"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                style="@style/Widget.Neumorph.ImageButton"
-                android:src="@drawable/ic_more"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_more"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:neumorph_backgroundColor="?attr/colorPrimary"
                 app:neumorph_shadowColorDark="?attr/colorSecondaryVariant"
                 app:neumorph_shadowColorLight="?attr/colorSecondary"
-                app:neumorph_shadowElevation="2dp"
-                app:neumorph_backgroundColor="?attr/colorPrimary"
-                />
+                app:neumorph_shadowElevation="2dp" />
 
 
-        </RelativeLayout>
-
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </soup.neumorphism.NeumorphCardView>
 
